@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  mongodb:
+    container_name: mongodb
+    image: "mongo:4.4"
+    volumes:
+      - data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - ecomm-network
+  backend:
+    container_name: ecomm_backend
+    build: ./backend
+    env_file: .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=${MONGODB_URI}
+    networks:
+      - ecomm-network
+  client:
+    container_name: ecomm_client
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - ecomm-network
+networks:
+  ecomm-network:
+    driver: bridge
+volumes:
+  data:
+  logs:
+
