@@ -1,5 +1,7 @@
 FROM node:13.12.0-slim
 
+LABEL maintainer = "winnie.gitau282@gmail.com"
+
 WORKDIR /app
 
 ADD package*.json ./
