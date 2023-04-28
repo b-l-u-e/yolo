@@ -1,23 +1,19 @@
-# Requirements
-Make sure that you have the following installed:
-- [node](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) 
-- npm 
-- [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) and start the mongodb service with `sudo service mongod start`
+# Create a Basic Microservice
 
-## Navigate to the Client Folder 
- `cd client`
+## Objective: Build ecommerce full stack application using docker-compose
 
-## Run the folllowing command to install the dependencies 
- `npm install`
+### Set up
 
-## Run the folllowing to start the app
- `npm start`
+1: Fork and clone this [repo](https://github.com/Vinge1718/yolo)
 
-## Open a new terminal and run the same commands in the backend folder
- `cd ../backend`
+2: Add Dockerfile to /client and /backend
 
- `npm install`
+3: Add docker-compose.yml to home directory ./
 
- `npm start`
+4: Create an account in [dockerhub](https://hub.docker.com/)
 
- ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+5: Create repository in dockerhub
+
+6: Type this in your terminal: `docker tag node:13.12.0-alpine3.10 winniegitau/yolo:1.0.0`
+
+7: After the above command add this: `docker push winniegitau/yolo:1.0.0` to push image to dockerhub
