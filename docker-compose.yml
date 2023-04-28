@@ -1,49 +1,54 @@
 version: "3.8"
+
 services:
-  mongodb:
-    container_name: mongodb
-    image: "mongo:4.4"
-    volumes:
-      - data:/data/db
-    ports:
-      - "27017:27017"
-    networks:
-      - ecomm-network
   backend:
     container_name: ecomm_backend
-    build: ./backend
-    env_file: .env
+    build: ./backend/
+    image: winniegitau/yolo:1.0.0
     ports:
       - "5000:5000"
     volumes:
       - logs:/app/logs
       - ./backend:/app
       - /app/node_modules
+    restart: always
     links:
       - mongodb
     depends_on:
       - mongodb
     environment:
-      - MONGO_URI=${MONGODB_URI}
+      - MONGO_URI=mongodb://mongodb/yolomy
     networks:
       - ecomm-network
   client:
     container_name: ecomm_client
-    build: ./client
+    build: ./client/
+    image: winniegitau/yolo:1.0.0
     ports:
       - "3000:3000"
     volumes:
       - ./client/src:/app/src
+    restart: always
     stdin_open: true
     tty: true
     depends_on:
       - backend
     networks:
       - ecomm-network
+  mongodb:
+    container_name: mongodb
+    image: "mongo:4.4"
+    volumes:
+      - yolomy:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - ecomm-network   
 networks:
   ecomm-network:
     driver: bridge
+
 volumes:
-  data:
+  yolomy:
   logs:
 
