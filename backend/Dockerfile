@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine3.10
+FROM node:alpine3.16
 
 LABEL maintainer = "winnie.gitau282@gmail.com"
 
