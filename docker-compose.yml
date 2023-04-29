@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mongodb:
     container_name: mongodb
-    image: "mongo:5.0.17"
+    image: winniegitau/mongo:1.0.0
     volumes:
       - yolomy:/data/db
     ports:
