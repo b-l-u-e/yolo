@@ -2,7 +2,7 @@ version: "3.8"
 services:
   mongodb:
     container_name: mongodb
-    image: "mongo:5.0"
+    image: "mongo:5.0.17"
     volumes:
       - yolomy:/data/db
     ports:
@@ -10,9 +10,9 @@ services:
     networks:
       - ecomm-network
   backend:
-    container_name: ecomm_backend
+    container_name: backend_yolo
     build: ./backend
-    image: winniegitau/yolo_backend:1.0.0
+    image: winniegitau/backend_yolo:1.0.0
     ports:
       - "5000:5000"
     volumes:
@@ -28,9 +28,9 @@ services:
     networks:
       - ecomm-network
   client:
-    container_name: ecomm_client
+    container_name: client_yolo
     build: ./client
-    image: winniegitau/yolo_client:1.0.0
+    image: winniegitau/client_yolo:1.0.0
     ports:
       - "3000:3000"
     volumes:
