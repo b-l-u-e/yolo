@@ -12,7 +12,7 @@ services:
   backend:
     container_name: ecomm_backend
     build: ./backend
-    image: winniegitau/yolo_backend:1.0.0
+    image: winniegitau/backend_yolo:1.0.0
     ports:
       - "5000:5000"
     volumes:
@@ -30,7 +30,7 @@ services:
   client:
     container_name: ecomm_client
     build: ./client
-    image: winniegitau/yolo_client:1.0.0
+    image: winniegitau/client_yolo:1.0.0
     ports:
       - "3000:3000"
     volumes:
