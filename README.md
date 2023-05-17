@@ -17,3 +17,7 @@
 6: Type this in your terminal: `docker tag node:13.12.0-alpine3.10 winniegitau/yolo:1.0.0`
 
 7: After the above command add this: `docker push winniegitau/yolo:1.0.0` to push image to dockerhub
+
+
+
+

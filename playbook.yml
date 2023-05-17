@@ -1,17 +1,31 @@
 ---
-- hosts: all
+- name: yolo-ecommerce Playbook
+  hosts: all
   become: yes
-  vars:
-    - status: present
+
+  vars_files:
+    - vars.yml
+
+  pre_tasks:
+    - name: update apt cache
+      apt: 
+        update_cache: yes
+
   tasks:
-  - name: install nettools
-    apt: name=net-tools state="{{status}}"
+    - name: Install git
+      include_role:
+        name: git
 
-  - name: install wireless-tools
-    apt: name=wireless-tools state="{{status}}"
+    - name: clone git repository
+      git:
+        repo: "{{ repo }}"
+        version: "{{ yolo_version }}"
+        dest: "{{ dest }}"
 
-  - name: install htop
-    apt: name=htop state="{{status}}"
+    - name: install docker and docker-compose
+      include_role: 
+        name: docker
 
-  
-
+    - name: run docker compose
+      include_role:
+        name: docker-compose

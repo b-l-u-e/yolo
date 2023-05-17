@@ -1,0 +1,4 @@
+repo: "https:github.com/b-l-u-e/yolo"
+yolo_version: "master"
+
+dest: "/home/gee/yolo"
