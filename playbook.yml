@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    - status: present
+  tasks:
+  - name: install nettools
+    apt: name=net-tools state="{{status}}"
+
+  - name: install wireless-tools
+    apt: name=wireless-tools state="{{status}}"
+
+  - name: install htop
+    apt: name=htop state="{{status}}"
+
+  
+
