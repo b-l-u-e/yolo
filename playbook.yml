@@ -16,12 +16,6 @@
       include_role:
         name: git
 
-    - name: clone git repository
-      git:
-        repo: "{{ repo }}"
-        version: "{{ yolo_version }}"
-        dest: "{{ dest }}"
-
     - name: install docker and docker-compose
       include_role: 
         name: docker
