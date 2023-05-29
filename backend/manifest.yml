@@ -21,6 +21,9 @@ spec:
       - image: gcr.io/plasma-iterator-386208/backend:v1
         name: backend
         imagePullPolicy: Always
+        env:
+          - name: MONGODB_URI
+            value: mongodb://mongodb:27017/yolomy
         resources: {}
         ports:
           - containerPort: 5000
@@ -39,5 +42,5 @@ spec:
   - port: 5000
     protocol: TCP
   selector:
-    app: webapp
+    app: backend
   type: LoadBalancer
